@@ -1,0 +1,984 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wrapper"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+                           
+            <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/option_array"
+            android:prompt="@string/option_chooser_string"/>
+                     
+        <ViewSwitcher
+            android:id="@+id/viewPayOffSwitcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:inAnimation="@android:anim/fade_in"
+            android:onClick="onTogglePayOffClicked"
+            android:outAnimation="@android:anim/fade_out"
+            android:padding="3dp" >
+
+            <RelativeLayout
+                android:id="@+id/viewPayOff1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Call"
+                        android:textColor="#0044A3"
+                        android:textSize="20dp"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- pay-off type -"
+                        android:textColor="#999999" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C"
+                        android:textColor="#84E308"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" / P"
+                        android:textColor="#999999"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/viewPayOff2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Put"
+                        android:textColor="#0044A3"
+                        android:textSize="20dp"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- pay-off type -"
+                        android:textColor="#999999" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C / "
+                        android:textColor="#999999"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="P"
+                        android:textColor="#84E308"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ViewSwitcher>
+
+        <ViewSwitcher
+            android:id="@+id/viewExerciseSwitcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:inAnimation="@android:anim/fade_in"
+            android:onClick="onToggleExerciseClicked"
+            android:outAnimation="@android:anim/fade_out"
+            android:padding="3dp" >
+
+            <RelativeLayout
+                android:id="@+id/viewExercise1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="European"
+                        android:textColor="#0044A3"
+                        android:textSize="20dp"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- exercise style -"
+                        android:textColor="#999999" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="E"
+                        android:textColor="#84E308"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" / A"
+                        android:textColor="#999999"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/viewExercise2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="American"
+                        android:textColor="#0044A3"
+                        android:textSize="20dp"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- exercise style -"
+                        android:textColor="#999999" >
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="E / "
+                        android:textColor="#999999"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A"
+                        android:textColor="#84E308"
+                        android:textSize="28dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ViewSwitcher>
+
+        <LinearLayout
+            android:id="@+id/underlying_group_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/underlying_title_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_title"
+                android:onClick="onToggleUnderlying"
+                android:orientation="horizontal"
+                android:padding="2dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="> "
+                    android:textColor="#FFDDDDDD"
+                    android:textSize="20dp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Underlying&apos;s parameters"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/underlying_parameters_group"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/spot_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Spot"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" £ "
+                            android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="current price"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+
+                                                <Button
+                            android:id="@+id/plus_spot_id"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:onClick="plusClickSpot"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_spot_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="100.0"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:id="@+id/minus_spot_id"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:onClick="minusClickSpot"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/volatility_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Volatility"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" % "
+                            android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="underlying volaltility"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+                        <Button
+                            android:onClick="plusClickVol"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_vol_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="20"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:onClick="minusClickVol"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout>
+                
+                
+                <RelativeLayout
+                    android:id="@+id/rate_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" % "
+                            android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="riskless interest rate"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+                        <Button
+                            android:onClick="plusClickRate"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_rate_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="8"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:onClick="minusClickRate"
+                           android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout>
+                
+				<RelativeLayout
+                    android:id="@+id/dividend_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dividend"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" % "
+                            android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="dividend yield"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+                        <Button
+                            android:onClick="plusClickDiv"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_div_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="4"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:onClick="minusClickDiv"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout>      
+                
+                
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/option_group_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/option_title_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_title"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:onClick="onToggleOption" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="> "
+                    android:textColor="#FFDDDDDD"
+                    android:textSize="20dp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Option&apos;s parameters"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/option_parameters_group"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                
+                <RelativeLayout
+                    android:id="@+id/strike_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Strike"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" £ "
+                            android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="strike price"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+                        <Button
+                            android:onClick="plusClickStrike"
+                           android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_strike_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="110.0"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:onClick="minusClickStrike"
+                           android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout> 
+                
+ 				<RelativeLayout
+                    android:id="@+id/expiry_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Expiry"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" yr "
+                            android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="years to expiration"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+                        <Button
+                            android:onClick="plusClickExpiry"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_expiry_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="1.0"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:onClick="minusClickExpiry"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout>                 
+               
+                
+                 				
+               <RelativeLayout
+                    android:id="@+id/barrier_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Barrier"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" £ "
+              				android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="barrier level"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+                        <Button
+                            android:onClick="plusClickBarrier"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_barrier_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="105.0"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:onClick="minusClickBarrier"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout>      				
+                 				
+            <RelativeLayout
+                    android:id="@+id/rebate_id"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:orientation="horizontal"
+                    android:padding="2dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+						<LinearLayout
+						    android:layout_width="wrap_content"
+                        	android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rebate"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" £ "
+              				android:textColor="#999999"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="if barrier crossed"
+                            android:textColor="#999999" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center" >
+
+                        <Button
+                            android:onClick="plusClickRebate"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="+"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+
+                        <EditText
+                            android:id="@+id/edit_rebate_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_gravity="center"
+                            android:hint="3.0"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:minEms="4"
+                            android:singleLine="true"
+                            android:textSize="20dp" />
+
+                        <Button
+                            android:onClick="minusClickRebate"
+                            android:layout_width="35dp"
+                            android:layout_height="fill_parent"
+                            android:text="-"
+                            android:textColor="#0044A3"
+                            android:textSize="20dp"
+                            android:textStyle="bold" >
+                        </Button>
+                    </LinearLayout>
+                </RelativeLayout>   
+               
+               
+            </LinearLayout>    
+            
+        </LinearLayout>
+
+                     <Button
+            android:id="@+id/compute_price"             
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price and Greeks"
+            android:textColor="#0044A3"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/euro"
+            android:onClick="onClickPrice" />
+		
+    </LinearLayout>
+
+</ScrollView>

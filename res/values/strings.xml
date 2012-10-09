@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="app_name">Monte Carlo Derivatives</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_parameters">Monte Carlo Derivatives</string>
+    <string name="option_chooser_string">Option type</string>
+
+    <string-array name="option_array">
+        <item>Vanilla</item>
+        <item>Digital</item>
+        <item>Barrier Up-In</item>
+        <item>Barrier Down-In</item>
+        <item>Barrier Up-Out</item>
+        <item>Barrier Down-Out</item>
+    </string-array>
+
+    <string name="title_activity_results">ResultsActivity</string>
+
+</resources>
