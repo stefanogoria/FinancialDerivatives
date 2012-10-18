@@ -92,6 +92,7 @@ public static ArrayList<ExerciseStyle> getExerciseStyle(OptionType theOptionType
 		
 	case DIGITAL:
 		styles.add(ExerciseStyle.EUROPEAN);
+		styles.add(ExerciseStyle.AMERICAN);
 		break;	
 	
 	default:
@@ -113,10 +114,21 @@ public static Option getOptionPricer(OptionType opt_type, PayOffType pay_off_typ
 	
 	switch(opt_type){
 	case VANILLA:
+		if(ex_style != ExerciseStyle.AMERICAN){
 		if(pay_off_type == PayOffType.CALL){
 		option = new EuropeanCall(spot, strike, r, d, T, vol);
 		}else if(pay_off_type == PayOffType.PUT){
 			option = new EuropeanPut(spot, strike, r, d, T, vol);
+		}
+		}
+		break;
+	case DIGITAL:
+		if(ex_style != ExerciseStyle.AMERICAN){
+		if(pay_off_type == PayOffType.CALL){
+		option = new EuropeanDigitalCall(spot, strike, r, d, T, vol);
+		}else if(pay_off_type == PayOffType.PUT){
+			option = new EuropeanDigitalPut(spot, strike, r, d, T, vol);
+		}
 		}
 		break;
 		
@@ -126,6 +138,44 @@ public static Option getOptionPricer(OptionType opt_type, PayOffType pay_off_typ
 	}
 	
 	return option;
+}
+
+public static PayOff getPayOff(OptionType opt_type, PayOffType pay_off_type,
+		ExerciseStyle ex_style, Map<String,Double> params){
+	PayOff thePayOff = null;
+	double spot = params.get("Spot");
+	double strike = params.get("Strike");
+	double r = params.get("Rate");
+	double d = params.get("Dividend");
+	double T = params.get("Expiry");
+	double vol = params.get("Volatility");
+	
+	switch(opt_type){
+	case VANILLA:
+
+		if(pay_off_type == PayOffType.CALL){
+		thePayOff = new PayOffCall();
+		}else if(pay_off_type == PayOffType.PUT){
+		thePayOff = new PayOffPut();	
+		}
+
+		break;
+	case DIGITAL:
+
+		if(pay_off_type == PayOffType.CALL){
+		thePayOff = new PayOffDigitalCall();
+		}else if(pay_off_type == PayOffType.PUT){
+			thePayOff = new PayOffDigitalPut();
+		}
+		
+		break;
+		
+	default:	
+	thePayOff = null;
+		break;
+	}
+	
+	return thePayOff;
 }
 
 }

@@ -1,6 +1,8 @@
 package com.monte.carlo.derivatives;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +31,8 @@ public class ResultsActivity extends Activity {
 	private Double Barrier;
 	private Double Rebate;
 	
+	private Integer Steps;
+	
 	private String PayOffType;
 	private String ExerciseStyle;
 	
@@ -36,35 +41,71 @@ public class ResultsActivity extends Activity {
 	private Double Delta=-10000.;
 	private Double Gamma=-10000.;
 	
+	private Double BinPrice = -100000.;
+	private Double BinDelta = -1000000.;
+	private Double BinGamma = -1000000.;
+	
 	private Map<String,Double> ParametersMap = new HashMap<String,Double>();
+	
+	private Map<String,PayOff> PayOffMap = new HashMap<String,PayOff>();
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         
+        PayOffMap.put("Call", new PayOffCall());
+        PayOffMap.put("Put", new PayOffPut());
+        
         setParams();
         
         updateParameterList();
+        
+        updateResultsList();
         
         computePriceGreeks();
         
         showResults();
 
     }
+	
+	private void updateResultsList(){
+		//method to show or not some results
+		if(ExerciseStyle.equals("American")){
+			LinearLayout analytical_res = (LinearLayout)findViewById(R.id.results_group_id);
+			analytical_res.setVisibility(View.GONE);
+		}
+		
+	}
 
 	private void showResults() {
+		//TODO: find a working way to do so with BigDecimal
+		int digits = 6;
+		Price = truncate(Price,digits);
+		Delta = truncate(Delta,digits);
+		Gamma = truncate(Gamma,digits);
+		
+		BinPrice = truncate(BinPrice,digits);
+		BinDelta = truncate(BinDelta,digits);
+		BinGamma = truncate(BinGamma,digits);
+		
 	TextView price = (TextView)findViewById(R.id.text_price_id);
 	price.setText(Price.toString());
 	
 	TextView delta = (TextView)findViewById(R.id.text_delta_id);
 	delta.setText(Delta.toString());
 	
-//	BigDecimal pr = new BigDecimal(Price);
-
-	
 	TextView gamma = (TextView)findViewById(R.id.text_gamma_id);
 	gamma.setText(Gamma.toString());
+	
+	TextView bin_price = (TextView)findViewById(R.id.bin_text_price_id);
+	bin_price.setText(BinPrice.toString());
+	
+	TextView bin_delta = (TextView)findViewById(R.id.bin_text_delta_id);
+	bin_delta.setText(BinDelta.toString());
+	
+	TextView bin_gamma = (TextView)findViewById(R.id.bin_text_gamma_id);
+	bin_gamma.setText(BinGamma.toString());
 	}
 
 	private void computePriceGreeks(){
@@ -76,6 +117,18 @@ public class ResultsActivity extends Activity {
 			Delta = option.getDelta();
 			Gamma = option.getGamma();
 		}
+		
+	//TODO FINCAD: move to the option MANAGER
+		BinomialTree tree = new BinomialImprovedCRR(Spot, Strike, Rate,
+				Dividend, Expiry, Volatility, Steps);
+
+			BinPrice = tree.GetThePrice(OptionManager.getPayOff(OptionManager.OptionMap.get(OptionName),
+			OptionManager.PayOffMap.get(PayOffType), OptionManager.StyleMap.get(ExerciseStyle),
+			ParametersMap), ExerciseStyle);
+			BinDelta = tree.GetDelta();
+			BinGamma = tree.GetGamma();
+	
+
 	}
 	
     private void setParams() {
@@ -94,6 +147,8 @@ public class ResultsActivity extends Activity {
     	Expiry = (Double)i.getExtras().get("expiry");
       	Barrier = (Double)i.getExtras().get("barrier");
     	Rebate = (Double)i.getExtras().get("rebate");
+    	
+    	Steps = (Integer)i.getExtras().get("steps");
 
     	//set Params
 TextView OptName = (TextView)findViewById(R.id.option_name);
@@ -126,6 +181,9 @@ barrier.setText(Barrier.toString());
 TextView rebate = (TextView)findViewById(R.id.text_rebate_id);
 rebate.setText(Rebate.toString());
 
+TextView steps = (TextView)findViewById(R.id.text_step_id);
+steps.setText(Steps.toString());
+
 //populate parameters map
 ParametersMap.put("Spot", Spot);
 ParametersMap.put("Volatility", Volatility);
@@ -148,7 +206,9 @@ ParametersMap.put("Rebate", Rebate);
 
     	RelativeLayout barrier_layout = (RelativeLayout)findViewById(R.id.input_barrier_id);
     	RelativeLayout rebate_layout = (RelativeLayout)findViewById(R.id.input_rebate_id);
-    	
+    	//TODO FINCAD - strip me
+    	RelativeLayout dividend_layout = (RelativeLayout)findViewById(R.id.input_div_id);
+    	dividend_layout.setVisibility(View.GONE);
    
     	if(paramsList.contains("Barrier")){
     		barrier_layout.setVisibility(View.VISIBLE);
@@ -172,4 +232,15 @@ ParametersMap.put("Rebate", Rebate);
 	public void onClickBack(View view){
 	super.onBackPressed();
 	}
+	
+	
+	public static double truncate(double value, int places) {
+//		BigDecimal trunc = new BigDecimal(value);
+			//trunc.setScale(1,BigDecimal.ROUND_HALF_EVEN);
+		 double multiplier = Math.pow(10, places);
+		    return Math.floor(multiplier * value) / multiplier;
+			//return trunc;
+		}
 }
+
+

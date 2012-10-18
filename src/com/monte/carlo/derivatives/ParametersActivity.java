@@ -37,11 +37,12 @@ public class ParametersActivity extends Activity {
 	private Double Spot = 100.0;
 	private Double Volatility = 0.2;
 	private Double Rate = 0.08;
-	private Double Dividend = 0.04;
+	private Double Dividend = 0.0;
 	private Double Strike = 110.0;
 	private Double Expiry = 1.0;
 	private Double Barrier = 105.;
 	private Double Rebate = 3.;
+	private int Steps = 100;
 	
 	private String OptionName;
 	private String PayOffType = "Call";
@@ -133,6 +134,7 @@ public class ParametersActivity extends Activity {
     	}else{
     		style.setVisibility(View.GONE);	
     	}
+
     }
     
     private void updateParameterList(){
@@ -145,6 +147,9 @@ public class ParametersActivity extends Activity {
     	RelativeLayout expiry_layout = (RelativeLayout)findViewById(R.id.expiry_id);
     	RelativeLayout barrier_layout = (RelativeLayout)findViewById(R.id.barrier_id);
     	RelativeLayout rebate_layout = (RelativeLayout)findViewById(R.id.rebate_id);
+    	//TODO: FINCAD - strip me
+    	RelativeLayout dividend_layout = (RelativeLayout)findViewById(R.id.dividend_id);
+    	dividend_layout.setVisibility(View.GONE);
     	
     	if(paramsList.contains("Strike")){
     		strike_layout.setVisibility(View.VISIBLE);
@@ -414,12 +419,40 @@ public class ParametersActivity extends Activity {
         	edt.setText(rebate.toString());
         }  
         
+        public void plusClickStep(View view){
+        	EditText edt = (EditText) findViewById(R.id.edit_steps_id);
+        	int steps;
+        	if(edt.getText().toString().equals("")){
+        		steps = Steps;
+        	}else{
+        		steps = Integer.valueOf(edt.getText().toString());
+        	}
+        	if(steps<10000)
+        	steps += 25;
+        	edt.setText(((Integer)steps).toString());
+        }
+        
+        public void minusClickStep(View view){
+        	EditText edt = (EditText) findViewById(R.id.edit_steps_id);
+        	int steps;
+        	if(edt.getText().toString().equals("")){
+        		steps = Steps;
+        	}else{
+        	steps =Integer.valueOf(edt.getText().toString());
+        	}
+        	if(steps>=25)
+        	steps -= 25;
+        	edt.setText(((Integer)steps).toString());
+        }
+        
         //price stuff
         
         public void onClickPrice(View view){
-        	
+
         	setData();
-        	
+//TODO FINCAD
+        	if(Steps>10000)
+        		Steps=10000;
         	 //Starting a new Intent
             Intent nextScreen = new Intent(this, ResultsActivity.class);
 
@@ -438,6 +471,8 @@ public class ParametersActivity extends Activity {
             
             nextScreen.putExtra("barrier", Barrier);
             nextScreen.putExtra("rebate", Rebate);
+            
+            nextScreen.putExtra("steps", Steps);
 
             startActivity(nextScreen);
         }
@@ -467,6 +502,9 @@ public class ParametersActivity extends Activity {
         	if(!((EditText)findViewById(R.id.edit_rebate_id)).getText().toString().equals(""))
         	Rebate = Double.valueOf(((EditText)findViewById(R.id.edit_rebate_id)).getText().toString());
         	
+        	if(!((EditText)findViewById(R.id.edit_steps_id)).getText().toString().equals(""))
+            Steps = Integer.valueOf(((EditText)findViewById(R.id.edit_steps_id)).getText().toString());
+          
         }
         
         public static Animation expand(final View v, final boolean expand) {
